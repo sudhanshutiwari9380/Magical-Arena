@@ -33,13 +33,21 @@ func (a *Arena) Fight(playerA, playerB string) error {
 		return errors.New("No player found with this name " + playerB)
 	}
 	if !(p1.GetHealth() <= p2.GetHealth()) {
-
 		temp := p2
 		p2 = p1
 		p1 = temp
-
 	}
 	fmt.Printf("first Attacker is %s\n", p1.GetName())
+	if !p1.IsAlive() {
+		fmt.Printf("Winner is %s", p2.GetName())
+		return nil
+	} else if !p2.IsAlive() {
+		fmt.Printf("Winner is %s", p1.GetName())
+		return nil
+	} else if !p1.IsAlive() && !p2.IsAlive() {
+		fmt.Printf("Draw")
+		return nil
+	}
 	for p1.IsAlive() && p2.IsAlive() {
 		a.Turn(p1, p2)
 		if !p2.IsAlive() {

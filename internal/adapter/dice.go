@@ -1,4 +1,3 @@
-// dice.go
 package adapter
 
 import (
@@ -9,7 +8,6 @@ import (
 type Dice struct {
 	Sides int
 }
-
 
 func NewDice(sidesofDice int) port.IDice {
 	return &Dice{Sides: sidesofDice}
